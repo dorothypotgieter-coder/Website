@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 15: Round 11 — The Final Round | Evan's Batumi Journey</title>
+<style>
+:root{
+  --bg:#faf5ec;
+  --paper:#fffdf9;
+  --ink:#2c2620;
+  --muted:#6f6558;
+  --teal:#1f5f5b;
+  --teal-dark:#153f3c;
+  --sea:#2b6d86;
+  --gold:#c08a2e;
+  --win:#3f7d4f;
+  --loss:#b3503f;
+  --line:#e7ddcb;
+  --radius:14px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.6;
+}
+h1,h2,h3,h4{
+  font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif;
+  color:var(--teal-dark);
+  line-height:1.25;
+  margin:0 0 .4em 0;
+}
+a{color:var(--sea);}
+a:hover{color:var(--gold);}
+img{max-width:100%;display:block;}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px;}
+
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:linear-gradient(180deg,var(--teal) 0%,var(--teal-dark) 100%);
+  color:#fdf7ea;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+header.site .bar{
+  max-width:980px;margin:0 auto;padding:12px 22px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+header.site .brand{
+  font-family:Georgia,serif;font-size:1.15rem;font-weight:bold;color:#fff;text-decoration:none;
+  letter-spacing:.2px;
+}
+header.site .brand .flag{margin-right:8px;}
+nav.mainnav{display:flex;gap:4px;flex-wrap:wrap;font-size:.92rem;}
+nav.mainnav a{
+  color:#f1e9d6;text-decoration:none;padding:6px 10px;border-radius:8px;
+}
+nav.mainnav a:hover, nav.mainnav a.active{background:rgba(255,255,255,.15);color:#fff;}
+
+.hero{
+  padding:52px 0 30px;text-align:center;
+  border-bottom:1px solid var(--line);
+  background:radial-gradient(ellipse at top, #f3ead7 0%, var(--bg) 70%);
+}
+.hero h1{font-size:2.4rem;margin-bottom:.2em;}
+.hero .subtitle{color:var(--muted);font-size:1.05rem;max-width:640px;margin:0 auto;}
+.hero .pieces{font-size:1.4rem;letter-spacing:6px;color:var(--gold);margin-bottom:14px;}
+
+.section{padding:34px 0;}
+.section h2{font-size:1.5rem;border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:18px;}
+
+.timeline-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;
+}
+.day-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px;text-decoration:none;color:var(--ink);
+  transition:transform .15s ease, box-shadow .15s ease;
+  display:flex;flex-direction:column;gap:6px;
+}
+.day-card:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(31,95,91,.14);}
+.day-card .num{font-family:Georgia,serif;color:var(--gold);font-size:.8rem;letter-spacing:1px;text-transform:uppercase;}
+.day-card .ttl{font-family:Georgia,serif;font-weight:bold;color:var(--teal-dark);font-size:1.02rem;}
+.day-card .meta{font-size:.82rem;color:var(--muted);}
+.day-card .badge{
+  align-self:flex-start;font-size:.72rem;padding:2px 8px;border-radius:20px;color:#fff;font-weight:600;
+}
+.badge.win{background:var(--win);}
+.badge.loss{background:var(--loss);}
+.badge.rest{background:var(--sea);}
+.badge.travel{background:var(--gold);}
+
+.feature-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+.feature-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;text-decoration:none;color:var(--ink);display:block;
+}
+.feature-card h3{margin-bottom:6px;}
+.feature-card p{color:var(--muted);margin:0;font-size:.94rem;}
+.feature-card:hover{box-shadow:0 8px 18px rgba(31,95,91,.14);}
+
+.day-header{padding:34px 0 10px;}
+.day-header .eyebrow{color:var(--gold);font-family:Georgia,serif;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;}
+.day-header h1{font-size:2rem;margin:.15em 0;}
+.day-header .datep{color:var(--muted);}
+
+.round-panel{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 20px;margin:18px 0;display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+}
+.round-panel .rlabel{font-family:Georgia,serif;font-weight:bold;color:var(--teal-dark);}
+.round-panel .rres{padding:3px 12px;border-radius:20px;color:#fff;font-weight:600;font-size:.85rem;}
+.round-panel a.gamelink{margin-left:auto;font-size:.9rem;}
+
+blockquote.diary{
+  background:var(--paper);border-left:4px solid var(--gold);
+  margin:18px 0;padding:14px 20px;border-radius:0 10px 10px 0;
+  font-family:Georgia,serif;font-size:1.03rem;color:#3a3428;
+}
+blockquote.diary .who{display:block;margin-top:8px;font-family:"Segoe UI",sans-serif;font-size:.82rem;color:var(--muted);font-style:normal;}
+
+.gallery{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:18px 0;
+}
+figure.photo{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+figure.photo img{width:100%;height:200px;object-fit:cover;}
+figure.photo figcaption{padding:8px 10px;font-size:.85rem;color:var(--muted);}
+
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:18px 0;}
+.video-grid video{width:100%;border-radius:10px;border:1px solid var(--line);background:#000;}
+
+.cheer-box{
+  background:#f3ead7;border:1px dashed var(--gold);border-radius:10px;padding:14px 18px;margin:18px 0;font-size:.92rem;
+}
+.cheer-box .head{font-family:Georgia,serif;font-weight:bold;color:var(--teal-dark);margin-bottom:6px;}
+.cheer-box .msg{margin:4px 0;color:#4a4336;}
+.cheer-box .msg b{color:var(--teal-dark);}
+
+.audio-note{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:14px 0;}
+.audio-note .cap{font-size:.88rem;color:var(--muted);margin-bottom:8px;}
+.audio-note audio{width:100%;}
+
+.daynav{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:26px 0 50px;margin-top:10px;border-top:1px solid var(--line);
+}
+.daynav a{
+  text-decoration:none;background:var(--teal);color:#fff;padding:10px 16px;border-radius:10px;font-size:.9rem;
+}
+.daynav a:hover{background:var(--teal-dark);}
+.daynav .home{background:transparent;color:var(--sea);border:1px solid var(--line);}
+
+table.results{width:100%;border-collapse:collapse;margin:16px 0;font-size:.92rem;}
+table.results th,table.results td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;}
+table.results th{background:var(--teal);color:#fff;font-family:Georgia,serif;font-weight:normal;}
+table.results tr:hover{background:#f3ead7;}
+.pill{padding:2px 10px;border-radius:20px;color:#fff;font-size:.78rem;font-weight:600;}
+
+.scoresheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin:18px 0;}
+.scoresheet-grid figure{margin:0;}
+.scoresheet-grid img{border:1px solid var(--line);border-radius:8px;}
+.scoresheet-grid figcaption{font-size:.8rem;color:var(--muted);margin-top:6px;text-align:center;}
+
+.stat-row{display:flex;gap:16px;flex-wrap:wrap;margin:18px 0;}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 22px;text-align:center;min-width:120px;}
+.stat .n{font-family:Georgia,serif;font-size:1.8rem;color:var(--teal-dark);font-weight:bold;}
+.stat .l{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+
+.notes-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;margin:18px 0;}
+.notes-box ul{margin:.5em 0;padding-left:1.3em;}
+.notes-box li{margin-bottom:.4em;}
+
+footer.site{padding:34px 0 60px;text-align:center;color:var(--muted);font-size:.85rem;}
+footer.site .heart{color:var(--loss);}
+</style>
+
+</head>
+<body>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="index.html"><span class="flag">&#9823;</span>Evan's Batumi Journey</a>
+    <nav class="mainnav"><a href="index.html" class="active">Home</a>
+<a href="results.html">Chess Results</a>
+<a href="game-highlights.html">Game Highlights</a></nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="day-header">
+    <div class="eyebrow">Day 15 of 17 &middot; <span class="badge loss" style="vertical-align:middle;">Round 11</span></div>
+    <h1>Round 11 — The Final Round</h1>
+    <div class="datep">Saturday, 27 June</div>
+  </div>
+  
+        <div class="round-panel">
+          <span class="rlabel">Round 11</span>
+          <span>vs Okubo Sui (Japan) &middot; Evan played Black</span>
+          <span class="pill loss">Loss</span>
+          <a class="gamelink" href="https://www.chess.com/events/world-cadets-cup-2026-open-08/11/Okubo_Sui-De_Wet_Evan" target="_blank" rel="noopener">Watch the game on chess.com &rarr;</a>
+        </div>
+  <blockquote class="diary">Early game today, as the closing ceremony is tonight.<span class="who">&mdash; Simone</span></blockquote>
+  
+  
+        <div class="gallery" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+          <figure class="photo"><img src="media/IMG-20260627-WA0004.jpg" alt="Evan&#x27;s handwritten scoresheet from the final round, against Sui Okubo." style="height:320px;object-fit:contain;background:#111;">
+          <figcaption>Evan&#x27;s handwritten scoresheet from the final round, against Sui Okubo.</figcaption></figure>
+        </div>
+  
+  
+  <div class="gallery"><figure class="photo"><img src="media/IMG-20260627-WA0001.jpg" alt="Round 11 — The Final Round" loading="lazy"></figure><figure class="photo"><img src="media/IMG-20260627-WA0013.jpg" alt="Round 11 — The Final Round" loading="lazy"><figcaption>Game time before bedtime, with JM Faith visiting the room.</figcaption></figure></div>
+  <div class="daynav"><a href="day-14.html">&larr; Day 14: Round 10 — Holding Steady</a> <a class="home" href="index.html">All Days</a> <a href="day-16.html">Day 16: Last Day in Batumi &rarr;</a></div>
+</div>
+
+<footer class="site">
+  Compiled with <span class="heart">&#10084;</span> by Dorothy &middot; FIDE World Cadets Cup 2026, Batumi, Georgia
+</footer>
+</body>
+</html>
