@@ -1,0 +1,16 @@
+EVAN BATUMI PWA — GITHUB UPDATE ONLY
+
+This folder contains only the 37 small files needed to update the existing GitHub repository.
+It deliberately excludes the media folder and the .git folder because those already exist in the repository.
+
+IMPORTANT:
+1. Do not upload this ZIP file to GitHub.
+2. Extract/unzip it on your computer.
+3. Open the extracted Evan_Batumi_PWA_GitHub_Update_Only folder.
+4. Select everything inside the folder (Ctrl+A).
+5. Drag the selected files and the icons folder onto the GitHub Upload files page.
+6. GitHub should show about 38 files, all far below 25 MB.
+7. Scroll down and click Commit changes.
+
+The files must go into the ROOT of the Website repository, next to the existing media folder.
+Do not create an extra Evan_Batumi_PWA_GitHub_Update_Only folder inside the repository.

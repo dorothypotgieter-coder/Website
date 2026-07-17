@@ -1,0 +1,25 @@
+{
+  "name": "Evan's Batumi Chess Journey",
+  "short_name": "Evan Batumi",
+  "description": "Evan de Wet's first World Chess Championship journey representing South Africa in Batumi, Georgia, at age eight.",
+  "id": "/",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#faf5ec",
+  "theme_color": "#1f5f5b",
+  "lang": "en-ZA",
+  "categories": ["sports", "education", "travel", "photography"],
+  "icons": [
+    {"src":"/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-maskable-192.png","sizes":"192x192","type":"image/png","purpose":"maskable"},
+    {"src":"/icons/icon-maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+  ],
+  "shortcuts": [
+    {"name":"Journey","url":"/index.html#journey","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]},
+    {"name":"Chess Results","url":"/results.html","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]},
+    {"name":"Videos","url":"/videos.html","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]}
+  ]
+}
